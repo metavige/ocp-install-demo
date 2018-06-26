@@ -1,6 +1,3 @@
-Update: June 2018 moved to [Gitlab](https://gitlab.com/redhatdemocentral/ocp-install-demo).
-
-
 OpenShift Container Platform Install Demo
 =========================================
 If you are looking to develop containerized applications, the OpenShift Container Plaform (OCP) can help you by providing 
@@ -28,7 +25,7 @@ Need more help? Follow a lab workshop on [how to install OpenShift Container Pla
 
 Install on your machine
 -----------------------
-1. [Download and unzip.](https://github.com/redhatdemocentral/ocp-install-demo/archive/master.zip)
+1. [Download and unzip.](https://gitlab.com/redhatdemocentral/ocp-install-demo/-/archive/master/ocp-install-demo-master.zip)
 
 2. Run 'init.sh', 'init.bat' or 'init-win10.bat' file, then sit back. (Note: 'init.bat' and 'init-win10.bat' must be run with Administrative privileges.)
 
@@ -183,11 +180,11 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 - OpenShift Container Platform v3.3 based on OpenShift command line tools v3.3.1.3.
 
-[![OCP Video](https://github.com/redhatdemocentral/ocp-install-demo/blob/master/docs/demo-images/ocp-install-video.png?raw=true)](https://youtu.be/Rj0We91ec9Y)
+[![OCP Video](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-video.png)](https://youtu.be/Rj0We91ec9Y)
 
-![OCP Login](https://github.com/redhatdemocentral/ocp-install-demo/blob/master/docs/demo-images/ocp-login.png?raw=true)
+![OCP Login](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-login.png)
 
-![OCP Catalog](https://github.com/redhatdemocentral/ocp-install-demo/blob/master/docs/demo-images/ocp-service-catalog.png?raw=true)
+![OCP Catalog](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-service-catalog.png)
 
-![Cloud Suite](https://github.com/redhatdemocentral/ocp-install-demo/blob/master/docs/demo-images/rhcs-arch.png?raw=true)
+![Cloud Suite](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/rhcs-arch.png)
 
