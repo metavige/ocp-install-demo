@@ -8,22 +8,20 @@ set OC_MAJOR_VER=v3
 set OC_MINOR_VER=9
 set OC_MINI_VER=14
 set OCP_VERSION=%OC_MAJOR_VER%.%OC_MINOR_VER%
-set STREAM_BRMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/decisionserver63-image-stream.json"
-set STREAM_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/decisionserver64-image-stream.json"
-set STREAM_EAP_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/eap64-image-stream.json"
-set STREAM_EAP_70="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/eap70-image-stream.json"
-set STREAM_EAP_71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/eap71-image-stream.json"
-set STREAM_FUSE="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/fis-image-streams.json"
-set STREAM_OPENJDK18="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/openjdk18-image-stream.json"
-set STREAM_BPMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/processserver63-image-stream.json"
-set STREAM_BPMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-streams/processserver64-image-stream.json"
-set STREAM_DOTNET="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/image-streams/dotnet_imagestreams.json"
-set STREAM_RHEL="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/image-streams/image-streams-rhel7.json"
-set TEMPLATE_EAP70="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-templates/eap70-basic-s2i.json"
-set TEMPLATE_EAP71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-templates/eap71-basic-s2i.json"
-set TEMPLATE_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-templates/decisionserver64-basic-s2i.json"
-set TEMPLATE_BPM_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-templates/processserver64-postgresql-s2i.json"
-set TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v3.10/xpaas-templates/processserver64-postgresql-persistent-s2i.json"
+set STREAM_BRMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/decisionserver63-image-stream.json"
+set STREAM_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/decisionserver64-image-stream.json"
+set STREAM_EAP_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/eap64-image-stream.json"
+set STREAM_EAP_71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/eap71-image-stream.json"
+set STREAM_FUSE="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/fis-image-streams.json"
+set STREAM_OPENJDK18="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/openjdk18-image-stream.json"
+set STREAM_BPMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver63-image-stream.json"
+set STREAM_BPMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver64-image-stream.json"
+set STREAM_DOTNET="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/dotnet_imagestreams.json"
+set STREAM_RHEL="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/image-streams-rhel7.json"
+set TEMPLATE_EAP71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/eap71-basic-s2i.json"
+set TEMPLATE_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/decisionserver64-basic-s2i.json"
+set TEMPLATE_BPM_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-s2i.json"
+set TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-persistent-s2i.json"
 
 
 REM uncomment amount memory needed, sets RAM usage limit for OCP, default 6 GB.
@@ -345,27 +343,6 @@ if %ERRORLEVEL% NEQ 0 (
 	echo.
   call oc delete -n openshift -f %STREAM_OPENJDK18%
   call oc create -n openshift -f %STREAM_OPENJDK18%
-	
-	if %ERRORLEVELS% NEQ 0 (
-		echo Failed again, exiting, check output messages and network connectivity before running install again.
-		echo.
-    call docker-machine rm -f openshift
-		GOTO :EOF
-  )
-)
-
-REM Updating EAP 7.0 template.
-call oc delete -n openshift -f %TEMPLATE_EAP70%
-call oc create -n openshift -f %TEMPLATE_EAP70%
-
-if %ERRORLEVEL% NEQ 0 (
-	echo.
-	echo Problem with accessing JBoss EAP 70 stream for OCP.
-	echo.
-  echo Trying again.
-	echo.
-  call oc delete -n openshift -f %TEMPLATE_EAP70%
-  call oc create -n openshift -f %TEMPLATE_EAP70%
 	
 	if %ERRORLEVELS% NEQ 0 (
 		echo Failed again, exiting, check output messages and network connectivity before running install again.
