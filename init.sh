@@ -11,18 +11,20 @@ ISO_CACHE="file://$HOME/.docker/machine/cache/boot2docker.iso"
 VIRT_DRIVER="virtualbox"
 STREAM_BRMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/decisionserver63-image-stream.json"
 STREAM_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/decisionserver64-image-stream.json"
+STREAM_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/rhdm71-image-streams.yaml"
 STREAM_EAP_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/eap64-image-stream.json"
 STREAM_EAP_71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/eap71-image-stream.json"
 STREAM_FUSE="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/fis-image-streams.json"
 STREAM_OPENJDK18="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/openjdk18-image-stream.json"
 STREAM_BPMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver63-image-stream.json"
 STREAM_BPMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver64-image-stream.json"
-STREAM_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/rhdm71-image-streams.yaml"
+STREAM_RHPAM_71="https://raw.githubusercontent.com/jboss-container-images/rhpam-7-openshift-image/7.1.0.GA/rhpam71-image-streams.yaml"
 STREAM_DOTNET="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/dotnet_imagestreams.json"
 STREAM_RHEL="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/image-streams-rhel7.json"
 TEMPLATE_EAP71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/eap71-basic-s2i.json"
-TEMPLATE_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/templates/rhdm71-authoring.yaml"
 TEMPLATE_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/decisionserver64-basic-s2i.json"
+TEMPLATE_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/templates/rhdm71-authoring.yaml"
+TEMPLATE_RHPAM_71="https://raw.githubusercontent.com/jboss-container-images/rhpam-7-openshift-image/7.1.0.GA/templates/rhpam71-authoring.yaml"
 TEMPLATE_BPM_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-s2i.json"
 TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-persistent-s2i.json"
 
@@ -305,6 +307,29 @@ if [ $? -ne 0 ]; then
 	fi
 fi
 
+# Updating Red Hat Process Automation Manager 7.1 image stream.
+#
+oc delete -n openshift -f $STREAM_RHPAM_71 >/dev/null 2>&1
+oc create -n openshift -f $STREAM_RHPAM_71
+
+if [ $? -ne 0 ]; then
+	echo
+	echo "Problem with accessing Red Hat Process Automation Manager 7.1 stream for OCP..."
+	echo
+  echo "Trying again..."
+	echo
+	sleep 10
+  oc delete -n openshift -f $STREAM_RHPAM_71 >/dev/null 2>&1
+  oc create -n openshift -f $STREAM_RHPAM_71
+	
+	if [ $? -ne 0 ]; then
+		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
+		echo
+		docker-machine rm -f openshift
+		exit
+	fi
+fi
+
 # Updating Red Hat Decision Manager 7.1 image stream.
 #
 oc delete -n openshift -f $STREAM_RHDM_71 >/dev/null 2>&1
@@ -501,6 +526,29 @@ if [ $? -ne 0 ]; then
 	sleep 10
   oc delete -n openshift -f $TEMPLATE_BPM_DB_64 >/dev/null 2>&1
   oc create -n openshift -f $TEMPLATE_BPM_DB_64
+	
+	if [ $? -ne 0 ]; then
+		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
+		echo
+		docker-machine rm -f openshift
+		exit
+	fi
+fi
+
+# Updating Red Hat Process Automation Manager Server 7.1 template.
+#
+oc delete -n openshift -f $TEMPLATE_RHPAM_71 >/dev/null 2>&1
+oc create -n openshift -f $TEMPLATE_RHPAM_71
+
+if [ $? -ne 0 ]; then
+	echo
+	echo "Problem with accessing Red Hat Process Automation Manager Server 7.1 template for OCP..."
+	echo
+  echo "Trying again..."
+	echo
+	sleep 10
+  oc delete -n openshift -f $TEMPLATE_RHPAM_71 >/dev/null 2>&1
+  oc create -n openshift -f $TEMPLATE_RHPAM_71
 	
 	if [ $? -ne 0 ]; then
 		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
