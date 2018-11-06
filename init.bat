@@ -15,10 +15,12 @@ set STREAM_EAP_71="https://raw.githubusercontent.com/openshift/openshift-ansible
 set STREAM_FUSE="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/fis-image-streams.json"
 set STREAM_OPENJDK18="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/openjdk18-image-stream.json"
 set STREAM_BPMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver63-image-stream.json"
+set STREAM_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/rhdm71-image-streams.yaml"
 set STREAM_BPMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver64-image-stream.json"
 set STREAM_DOTNET="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/dotnet_imagestreams.json"
 set STREAM_RHEL="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/image-streams-rhel7.json"
 set TEMPLATE_EAP71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/eap71-basic-s2i.json"
+set TEMPLATE_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/templates/rhdm71-authoring.yaml"
 set TEMPLATE_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/decisionserver64-basic-s2i.json"
 set TEMPLATE_BPM_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-s2i.json"
 set TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-persistent-s2i.json"
@@ -247,6 +249,28 @@ if %ERRORLEVEL% NEQ 0 (
   )
 )
 
+REM Updating Red Hat Decision Manager 7.1 image stream.
+call oc delete -n openshift -f %STREAM_RHDM_71%
+call oc create -n openshift -f %STREAM_RHDM_71%
+
+if %ERRORLEVEL% NEQ 0 (
+	echo.
+	echo Problem with accessing Red Hat Decision Manager 7.1 stream for OCP.
+	echo.
+  echo Trying again.
+	echo.
+  call oc delete -n openshift -f %STREAM_RHDM_71%
+  call oc create -n openshift -f %STREAM_RHDM_71%
+	
+	if %ERRORLEVELS% NEQ 0 (
+		echo Failed again, exiting, check output messages and network connectivity before running install again.
+		echo.
+    call docker-machine rm -f openshift
+		GOTO :EOF
+  )
+)
+
+
 REM Updating JBoss BPMS 6.4 image stream.
 call oc delete -n openshift -f %STREAM_BPMS_64%
 call oc create -n openshift -f %STREAM_BPMS_64%
@@ -393,6 +417,28 @@ if %ERRORLEVEL% NEQ 0 (
 		GOTO :EOF
   )
 )
+
+REM Updating Red Hat Decision Manager 7.1 template.
+call oc delete -n openshift -f %TEMPLATE_RHDM_71%
+call oc create -n openshift -f %TEMPLATE_RHDM_71%
+
+if %ERRORLEVEL% NEQ 0 (
+	echo.
+	echo Problem with accessing Red Hat Decision Manager 7.1 template for OCP.
+	echo.
+  echo Trying again.
+	echo.
+  call oc delete -n openshift -f %TEMPLATE_RHDM_71%
+  call oc create -n openshift -f %TEMPLATE_RHDM_71%
+	
+	if %ERRORLEVELS% NEQ 0 (
+		echo Failed again, exiting, check output messages and network connectivity before running install again.
+		echo.
+    call docker-machine rm -f openshift
+		GOTO :EOF
+  )
+)
+
 
 REM Updating Process Server 6.4 template.
 call oc delete -n openshift -f %TEMPLATE_BPM_64%

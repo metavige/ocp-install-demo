@@ -17,9 +17,11 @@ STREAM_FUSE="https://raw.githubusercontent.com/openshift/openshift-ansible/maste
 STREAM_OPENJDK18="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/openjdk18-image-stream.json"
 STREAM_BPMS_63="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver63-image-stream.json"
 STREAM_BPMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-streams/processserver64-image-stream.json"
+STREAM_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/rhdm71-image-streams.yaml"
 STREAM_DOTNET="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/dotnet_imagestreams.json"
 STREAM_RHEL="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/image-streams/image-streams-rhel7.json"
 TEMPLATE_EAP71="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/eap71-basic-s2i.json"
+TEMPLATE_RHDM_71="https://raw.githubusercontent.com/jboss-container-images/rhdm-7-openshift-image/7.1.0.GA/templates/rhdm71-authoring.yaml"
 TEMPLATE_BRMS_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/decisionserver64-basic-s2i.json"
 TEMPLATE_BPM_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-s2i.json"
 TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/latest/xpaas-templates/processserver64-postgresql-persistent-s2i.json"
@@ -27,8 +29,8 @@ TEMPLATE_BPM_DB_64="https://raw.githubusercontent.com/openshift/openshift-ansibl
 # uncomment amount memory needed, sets RAM usage limit for OCP, default 6 GB.
 #VM_MEMORY=10240    # 10GB
 #VM_MEMORY=8192    # 8GB
-#VM_MEMORY=6144     # 6GB
-VM_MEMORY=4098     # 4GB
+VM_MEMORY=6144     # 6GB
+#VM_MEMORY=4098     # 4GB
 #VM_MEMORY=3072     # 3GB
 
 # wipe screen.
@@ -303,6 +305,29 @@ if [ $? -ne 0 ]; then
 	fi
 fi
 
+# Updating Red Hat Decision Manager 7.1 image stream.
+#
+oc delete -n openshift -f $STREAM_RHDM_71 >/dev/null 2>&1
+oc create -n openshift -f $STREAM_RHDM_71
+
+if [ $? -ne 0 ]; then
+	echo
+	echo "Problem with accessing Red Hat Decision Manager 7.1 stream for OCP..."
+	echo
+  echo "Trying again..."
+	echo
+	sleep 10
+  oc delete -n openshift -f $STREAM_RHDM_71 >/dev/null 2>&1
+  oc create -n openshift -f $STREAM_RHDM_71
+	
+	if [ $? -ne 0 ]; then
+		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
+		echo
+		docker-machine rm -f openshift
+		exit
+	fi
+fi
+
 # Updating JBoss EAP 7.1 image stream.
 oc delete -n openshift -f $STREAM_EAP_71 >/dev/null 2>&1
 oc create -n openshift -f $STREAM_EAP_71
@@ -407,6 +432,29 @@ if [ $? -ne 0 ]; then
 	sleep 10
   oc delete -n openshift -f $TEMPLATE_BRMS_64 >/dev/null 2>&1
   oc create -n openshift -f $TEMPLATE_BRMS_64
+	
+	if [ $? -ne 0 ]; then
+		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
+		echo
+		docker-machine rm -f openshift
+		exit
+	fi
+fi
+
+# Updating Red Hat Decision Manager Service 7.1 template.
+#
+oc delete -n openshift -f $TEMPLATE_RHDM_71 >/dev/null 2>&1
+oc create -n openshift -f $TEMPLATE_RHDM_71
+
+if [ $? -ne 0 ]; then
+	echo
+	echo "Problem with accessing Red Hat Decision Manager Service template for OCP..."
+	echo
+  echo "Trying again..."
+	echo
+	sleep 10
+  oc delete -n openshift -f $TEMPLATE_RHDM_71 >/dev/null 2>&1
+  oc create -n openshift -f $TEMPLATE_RHDM_71
 	
 	if [ $? -ne 0 ]; then
 		echo "Failed again, exiting, check output messages and network connectivity before running install again..."
