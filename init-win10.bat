@@ -132,7 +132,7 @@ if %ERRORLEVEL% NEQ 0 (
   echo.
   echo Problem with docker machine creation that I can't resolve, validate network configuration and/or please raise an issue and add error output:
   echo.
-  echo    https://github.com/redhatdemocentral/ocp-install-demo/issues/new
+  echo    https://gitlab.com/redhatdemocentral/ocp-install-demo/issues/new
   echo.
   GOTO :EOF
 )
@@ -162,7 +162,7 @@ if %ERRORLEVEL% NEQ 0 (
   echo.
   echo There was an issue starting OCP. If you feel the need, raise an issue and add error output:
   echo.
-  echo    https://github.com/redhatdemocentral/ocp-install-demo/issues/new
+  echo    https://gitlab.com/redhatdemocentral/ocp-install-demo/issues/new
   echo.
   GOTO :EOF
 )

@@ -134,7 +134,7 @@ if [ $? -ne 0 ]; then
 				echo
 				echo "Problem with docker machine creation that I can't resolve, please raise an issue and add error output:"
 				echo
-				echo "   https://github.com/redhatdemocentral/ocp-install-demo/issues/new"
+				echo "   https://gitlab.com/redhatdemocentral/ocp-install-demo/issues/new"
 				echo
 				exit
 		fi
@@ -168,7 +168,7 @@ if [ $? -ne 0 ]; then
 				echo
 				echo "Problem with installation that I can't resolve, please raise an issue and add error output:"
 				echo
-				echo "   https://github.com/redhatdemocentral/ocp-install-demo/issues/new"
+				echo "   https://gitlab.com/redhatdemocentral/ocp-install-demo/issues/new"
 				echo
 				exit
 		fi
