@@ -56,7 +56,7 @@ echo ##      ####  #     #####   #   ####  #   # ##### # # #     ##
 echo ##      #     #     #   #   #   #     #   # #  #  #   #     ##   
 echo ##      #     ##### #   #   #   #      ###  #   # #   #     ##   
 echo ##                                                          ##   
-echo ##  https://github.com/redhatdemocentral/ocp-install-demo   ##
+echo ##  https://gitlab.com/redhatdemocentral/ocp-install-demo   ##
 echo ##                                                          ##   
 echo ##############################################################
 echo.
