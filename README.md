@@ -1,112 +1,47 @@
-OpenShift Container Platform Install Demo
-=========================================
+OpenShift Container Platform Easy Local Install  
+===============================================
 If you are looking to develop containerized applications, the OpenShift Container Plaform (OCP) can help you by providing 
-private PaaS (Cloud) environment you can install locally. It includes the same container development and run-time 
+private cloud environment you can install locally. It includes the same container development and run-time 
 tools used to create and deploy containers for large data centers. 
 
-This project requires a docker engine, OpenShift command line tools and VirtualBox, but these checks happen when you run the
-installation and point you to what is missing. It also checks that you have the right versions running too.
-
-Pro Tip: Pay close attention to console output, will guide you to dependencies you need if missing. These dependencies are 
-listed here and the install provides pointers to downloads if missing:
+This project leverages Code Ready Containers, OpenShift command line tools, and a virtualization tool based on your operating
+system, but these checks happen when you run the installation and point you to what is missing. 
+It also checks that you have the right versions running too.
 
    ```
-   1. VirtualBox for Windows and OSX
-   2. Hyper-V for Windows 10 (Windows Feature Install)
-      a. Important - Use Hyper-V Manager to create "ocpNET" Virtual Switch. (name is used in script)
-      b. Important - Set "ocpNET" to External Network physical/wireless interface (with DHCP) - Must have Internet.
-   3. KVM for Linux
-   4. Docker-machine tooling
-   5. Ansible-playbook tooling
-   5. OpenShift Client (oc) v3.9.14
+   1. HyperKit for OSX, Hyper-V for Windows, or Libvirt for Linux
+   2. Code Ready Containers (OCP 4.2)
+   3. OpenShift Client (oc) v4.2.0
    ```
-Need more help? Follow a lab workshop on [how to install OpenShift Container Platform step-by-step](https://appdevcloudworkshop.github.io/lab01.html).
+Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
+to your very own local OCP installation.
 
 
 Install on your machine
 -----------------------
 1. [Download and unzip.](https://gitlab.com/redhatdemocentral/ocp-install-demo/-/archive/master/ocp-install-demo-master.zip)
 
-2. Run 'init.sh', 'init.bat' or 'init-win10.bat' file, then sit back. (Note: 'init.bat' and 'init-win10.bat' must be run with Administrative privileges.)
+2. Run 'init.sh' or 'init.bat' file, then sit back. (Note: 'init.bat' should be run with Administrative privileges.)
 
 3. Follow displayed instructions to log in to your brand new OpenShift Container Platform!
-
-4. Still want more help installing? Try <a href="https://appdevcloudworkshop.github.io/lab01.html" target="_blank">these 
-instructions (part of an online workshop)</a> that explain the installation in detail.
 
 
 Notes
 -----
-Installation reserves default of 6GB memory on your machine for OCP, see comments at top of init scripts to adjust variable 
-used to limit memory usage based on your needs.
-
------
-
 Log in to the OCP console with:
    
    ```
-   Developer user:  openshift-dev
-   Developer pass:  devel
+   Admin user: kubeadmin
+   Admin pass: generated-during-installation
 
-   Admin user: admin
-   Admin pass: admin
+   Developer user:  developer
+   Developer pass:  developer
    ```
 
 ------
 
-Persisitence is enabled, so to shutdown and restart the openshift cluster with your projects in place DO NOT
-run 'docker-machine rm -f openshift' or use init.sh / init.bat, instead:
-
-   ```
-   # shutdown using:
-   #
-   $ oc cluster down --docker-machine=openshift
-   $ docker-machine stop openshift
-
-   # restart use the existing data and configuration:
-   #
-   $ docker-machine start openshift
-   $ oc cluster up --image=registry.access.redhat.com/openshift3/ose --host-data-dir=/var/lib/boot2docker/ocp-data  \
-        --docker-machine=openshift --host-config-dir=/var/lib/boot2docker/ocp-config --use-existing-config=true     \
-        --host-pv-dir=/var/lib/boot2docker/ocp-pv
-   ```
-
-You can find these commands for unix based machines in the directory support/{ocp-stop.sh|ocp-restart.sh}.
-
------
-
-Network errors? If you recieve the following error, on Linux:
-
-   ```
-   Error: did not detect an --insecure-registry argument on the Docker daemon
-   ```
-
-Then ensure that the Docker daemon is running with the following argument by:
-
-   ```
-   # Add the following to /etc/sysconfig/docker file and
-   # restart the docker service:
-   #
-   INSECURE_REGISTRY='--insecure-registry 172.30.0.0/16'
-   ```
-
-Or this network error on osX:
-
-   ```
-   Unable to connect to the server: net/http: TLS handshake timeout
-   ```
-
-Then add the this IP to the Docker Deamon insecure registry list:
-
-   ```
-   172.30.0.0/16
-
-   ```
-
------
-
 This project has an install script that is setup to allow you to re-run it without worrying about previous
-installations. If you re-run it, it removes old 'openshift' machines and reinstalls for you. 
+installations. If you re-run it, it removes old setups and reinstalls for you. 
 
 -----
 
@@ -150,6 +85,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v2.7 - OpenShift Container Platform v4.2 based on OpenShift command line tools v4.2.0, based on Code Ready Containers.
+
 - v2.6 - OpenShift Container Platform v3.9 based on OpenShift command line tools v3.9.14, updated with RHDM 7.1 and RHPAM 7.1 image streams and templates.
 
 - v2.5 - OpenShift Container Platform v3.9 based on OpenShift command line tools v3.9.14, updated image streams and templates to v3.10 feeds.
@@ -184,11 +121,9 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 - OpenShift Container Platform v3.3 based on OpenShift command line tools v3.3.1.3.
 
-[![OCP Video](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-video.png)](https://youtu.be/Rj0We91ec9Y)
-
 ![OCP Login](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-login.png)
 
-![OCP Catalog](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-service-catalog.png)
+![OCP Install](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-version-checking.png)
 
-![Cloud Suite](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/rhcs-arch.png)
+![OCP Final](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-final-details.png)
 
