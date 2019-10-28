@@ -3,7 +3,6 @@ setlocal
 
 REM Set to your PULL-SECRET file location and admin password.
 set SECRET_PATH=
-set KUBEADMINPASS=
 
 REM OpenShift client details.
 set OC_MAJOR_VER=v4
@@ -15,6 +14,10 @@ set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2
 REM Code Ready Containers details.
 set VIRT_DRIVER=hyperv
 set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
+
+REM Config files.
+set ADMINPASS="%USERPROFIL%\.crc\cache\crc_hyperkit_4.2.0\kubeadmin-password"
+set KUBECONFIG="%USERPROFIL%\.crc\cache\crc_hyperkit_4.2.0\kubeconfig"
 
 REM wipe screen.
 cls
@@ -54,7 +57,7 @@ REM
 call oc version --client >nul 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
-  echo OpenShift CLI tooling is required but not installed yet... download %OCP_VERSION% here: %OCP_URL%
+  echo OpenShift CLI tooling is required but not installed yet... download %OCP_VERSION% here, unzip and install on your path: %OCP_URL%
   GOTO :EOF
 ) else (
   echo OpenShift command line tools installed... checking for valid version...
@@ -94,7 +97,7 @@ call crc version >nul 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
   echo.
-  echo Code Ready Containers is not yet installed... download here: %CRC_WINDOWS%
+  echo Code Ready Containers is not yet installed... download here, unzip and install on your path: %CRC_WINDOWS%
   echo.
   GOTO :EOF
 ) else (
@@ -171,9 +174,19 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo.
+echo Retrieving the admin password...
+echo.
+set KUBE_PASS=('call type %ADMINPASS%')
+
+echo Retrieving oc client host login from kubeconfig file...
+echo.
+REM OCP_HOST=$(cat ${KUBECONFIG} | grep server | awk -F'[:]' '{print $2":"$3":"$4}')     TODO: fix for windowns
+set OCP_HOST=('type %KUBECONFIG% | call findstr server')
+
+echo.
 echo Logging in as admin user...
 echo.
-call oc login -u kubeadmin -p %KUBEADMINPASS%
+call oc login %OCP_HOST% -u developer -p developer
 
 if %ERRORLEVEL% NEQ 0 (
   echo.
@@ -182,25 +195,10 @@ if %ERRORLEVEL% NEQ 0 (
   GOTO :EOF
 )
 
-
-REM Capturing OCP IP address from status command.  (TODO for windows)
-REM
-REM OCP_IP=$(oc status | awk '{print $6}' | grep http | awk -F'[:]' '{print $1":"$2}')
-REM
-REM for /f "delims=" %%i in ('oc status ^| findstr -i -c:"My Project"') do (
-REM   for /F "tokens=8 delims= " %%A in ('echo %%i') do ( 
-REM     set OCP_IP=%%A	
-REM   )
-REM )
-
-echo.
-echo. Set variable OCP_IP to: %OCP_IP%
-echo.
-
 REM Detect console url.
 REM
-REM OCP_CONSOLE=$(crc console --url)   TODO: validate set variable with call to crc for windows.
-set OCP_CONSOLE=(call crc console --url)
+REM OCP_CONSOLE=$(crc console --url)              TODO: fix or validate for windows
+set OCP_CONSOLE=('call crc console --url')  
 
 echo.
 echo ====================================================
@@ -212,7 +210,7 @@ echo =                                                  =
 echo =	%OCP_CONSOLE% =
 echo =                                                  =
 echo =  Log in admin:: kubeadmin                        =
-echo =       password: %KUBEADMIN_PASS%    =
+echo =       password: %KUBE_PASS%    =
 echo =                                                  =
 echo =     Log in dev: developer                        =
 echo =       password: developer                        =

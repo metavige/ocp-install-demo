@@ -15,6 +15,10 @@ VIRT_DRIVER="hyperkit"
 CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
 
+# Config files.
+ADMINPASS="${HOME}/.crc/cache/crc_hyperkit_4.2.0/kubeadmin-password"
+KUBECONFIG="${HOME}/.crc/cache/crc_hyperkit_4.2.0/kubeconfig"
+
 # wipe screen.
 clear 
 
@@ -58,7 +62,7 @@ fi
 
 # Ensure OpenShift command line tools available.
 #
-command -v oc version --client >/dev/null 2>&1 || { echo >&2 "OpenShift CLI tooling is required but not installed yet... download ${OCP_VERSION} here: ${OCP_URL}"; exit 1; }
+command -v oc version --client >/dev/null 2>&1 || { echo >&2 "OpenShift CLI tooling is required but not installed yet... download ${OCP_VERSION} here (unzip and put on your path): ${OCP_URL}"; exit 1; }
 echo "OpenShift command line tools installed... checking for valid version..."
 echo
 
@@ -89,11 +93,11 @@ fi
 # Check on Code Read Containers availability.
 #
 if [ `uname` == 'Darwin' ]; then
-    command -v crc version >/dev/null 2>&1 || { echo >&2 "Code Ready Containers is not yet installed... download here: ${CRC_OSX}"; exit 1; }
+    command -v crc version >/dev/null 2>&1 || { echo >&2 "Code Ready Containers is not yet installed... download here (unzip and put on your path): ${CRC_OSX}"; exit 1; }
 		echo "Code Ready Container is installed on your OSX machine..."
 		echo
 elif [ `uname` == 'Linux' ]; then
-    command -v crc version >/dev/null 2>&1 || { echo >&2 "Code Ready Containers is not yet installed... download here: ${CRC_LINUX}"; exit 1; }
+    command -v crc version >/dev/null 2>&1 || { echo >&2 "Code Ready Containers is not yet installed... download here (unzip and put on your path): ${CRC_LINUX}"; exit 1; }
 		echo "Code Ready Container is installed on your Linux machine..."
 		echo
 fi
@@ -133,7 +137,6 @@ if [ -z ${SECRET_PATH} ]; then
 fi
 	
 # secret path set, so commit to configuration.
-echo
 echo "Setting pull-secret-file in cofiguration to: ${SECRET_PATH}"
 echo
 crc config set pull-secret-file ${SECRET_PATH}
@@ -168,12 +171,31 @@ if [ $? -ne 0 ]; then
 		echo
 fi
 
-# capturing OCP IP address from status command.
-OCP_IP=$(oc status | awk '{print $6}' | grep http | awk -F'[:]' '{print $1":"$2}')
+# retrieve kubeadmin password.
+echo
+echo "Retrieving the admin password..."
+echo
+KUBE_PASS=$(cat ${ADMINPASS})
+
+# retreive oc login host.
+echo "Retrieving oc client host login from kubeconfig file..."
+echo
+OCP_HOST=$(cat ${KUBECONFIG} | grep server | awk -F'[:]' '{print $2":"$3":"$4}')
 
 echo 
-echo "Set OCP IP to:  $OCP_IP"
+echo "Set OCP_HOST to:  $OCP_HOST"
 echo
+
+echo "Logging in as developer using oc client..."
+echo
+# log in to OCP cluster.
+oc login ${OCP_HOST} -u developer -p developer
+
+if [ $? -ne 0 ]; then
+		echo
+		echo "Error occurred during 'oc login' command..."
+		echo
+fi
 
 # detect console url.
 OCP_CONSOLE=$(crc console --url)
@@ -188,7 +210,7 @@ echo "=                                                    ="
 echo "= ${OCP_CONSOLE} ="
 echo "=                                                    ="
 echo "=  Log in as admin: kubeadmin                        ="
-echo "=         password: [see-startup-output]             ="
+echo "=         password: ${KUBE_PASS}          ="
 echo "=                                                    ="
 echo "=  Log in as dev: developer                          ="
 echo "=       password: developer                          ="
