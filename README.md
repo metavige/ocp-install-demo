@@ -32,7 +32,7 @@ Log in to the OCP console with:
    
    ```
    Admin user: kubeadmin
-   Admin pass: generated-during-installation
+   Admin pass: [provided-during-installation]
 
    Developer user:  developer
    Developer pass:  developer
