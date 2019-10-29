@@ -15,10 +15,6 @@ VIRT_DRIVER="hyperkit"
 CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
 
-# Config files.
-ADMINPASS="${HOME}/.crc/cache/crc_hyperkit_4.2.0/kubeadmin-password"
-KUBECONFIG="${HOME}/.crc/cache/crc_hyperkit_4.2.0/kubeconfig"
-
 # wipe screen.
 clear 
 
@@ -171,11 +167,17 @@ if [ $? -ne 0 ]; then
 		echo
 fi
 
+# Find cache directory
+CACHE_DIR="$(crc status | grep "Cache Directory" | awk '{ print $3 }')"
+
+# Find kubeconfig file
+KUBECONFIG="$(find ${CACHE_DIR} -type f -name kubeconfig | xargs ls -t | head -1)"
+
 # retrieve kubeadmin password.
 echo
 echo "Retrieving the admin password..."
 echo
-KUBE_PASS=$(cat ${ADMINPASS})
+KUBE_PASS="$(cat $(find ${CACHE_DIR} -type f -name kubeadmin-password | xargs ls -t | head -1))"
 
 # retreive oc login host.
 echo "Retrieving oc client host login from kubeconfig file..."
