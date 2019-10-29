@@ -184,11 +184,10 @@ echo "Retrieving oc client host login from kubeconfig file..."
 echo
 OCP_HOST=$(cat ${KUBECONFIG} | grep server | awk -F'[:]' '{print $2":"$3":"$4}')
 
-echo 
 echo "Set OCP_HOST to:  $OCP_HOST"
 echo
 
-echo "Logging in as developer using oc client..."
+echo "Logging in as developer using oc client:"
 echo
 # log in to OCP cluster.
 oc login ${OCP_HOST} -u developer -p developer
