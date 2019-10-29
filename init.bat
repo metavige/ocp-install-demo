@@ -84,10 +84,10 @@ if %OC_MAJOR_VER% EQU %verone% if %OC_MINOR_VER% EQU %vertwo% if %OC_MINI_VER% E
  GOTO :passOcTestContinue
 )
 
-echo Version of installed OpenShift command line tools is %verone%.%vertwo%.%verthree%, must be %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%
-echo.
-echo Download for Windows here: %OC_URL%
-GOTO :EOF
+REM echo Version of installed OpenShift command line tools is %verone%.%vertwo%.%verthree%, must be %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%
+REM echo.
+REM echo Download for Windows here: %OC_URL%
+REM GOTO :EOF
 
 :passOcTestContinue
 
