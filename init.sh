@@ -1,10 +1,10 @@
 #!/bin/sh 
 
 # Set to your PULL-SECRET file location and admin password.
-SECRET_PATH="/Users/erics/bin/pull-secret"
+SECRET_PATH=
 
 # OpenShift client details
-OC_MAJOR_VER="4"
+OC_MAJOR_VER=4
 OC_MINOR_VER=2
 OC_MINI_VER=0
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
