@@ -4,17 +4,24 @@ If you are looking to develop containerized applications, the OpenShift Containe
 private cloud environment you can install locally. It includes the same container development and run-time 
 tools used to create and deploy containers for large data centers. 
 
-This project leverages Code Ready Containers, OpenShift command line tools, and a virtualization tool based on your operating
-system, but these checks happen when you run the installation and point you to what is missing. 
-It also checks that you have the right versions running too.
+Code Ready Containers can be used without this project, but if you want to try a self-contained and reusable container platform
+installation on your local machine with OpenShift Container Platform this might just be the project for you. This project 
+leverages Code Ready Containers, OpenShift command line tools, and a virtualization tool based on your operating system. You can
+start by downloading this project and running as it checks for all needed dependecies when you run the install script. If you're
+missing anything, you'll receive pointers to where to find what's needed. Just download the missing component and restart the
+install script. Re-running this after an installation is also safe, it's full of checks and verifications that you'll see on the
+screen as you run the install script. 
+
+Enjoy your easy to install, local OpenShift Container Platform:
 
    ```
    1. HyperKit for OSX, Hyper-V for Windows, or Libvirt for Linux
    2. Code Ready Containers (OCP 4.2)
    3. OpenShift Client (oc) v4.2.0
    ```
+
 Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
-to your very own local OCP installation.
+to your very own local container platform installation.
 
 
 Install on your machine
