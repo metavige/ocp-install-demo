@@ -1,5 +1,5 @@
-OpenShift Container Platform Easy Local Install  
-===============================================
+Code Ready Containers Easy Local Install  
+========================================
 If you are looking to develop containerized applications, the OpenShift Container Plaform (OCP) can help you by providing 
 private cloud environment you can install locally. It includes the same container development and run-time 
 tools used to create and deploy containers for large data centers. 
