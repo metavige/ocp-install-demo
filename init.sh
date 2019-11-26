@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 # Set to your PULL-SECRET file location and admin password.
-SECRET_PATH=
+SECRET_PATH=PATH_TO_FILE
 
 # OpenShift client details
 OC_MAJOR_VER=4
@@ -113,7 +113,7 @@ echo
 echo "Before starting, setting up pull secret file location..."
 echo
 
-if [ -z ${SECRET_PATH} ]; then
+if [ -z ${SECRET_PATH} ] || [ ! -f ${SECRET_PATH} ]; then
 	# empty file variable.
 	echo
 	echo "################################################################################"
