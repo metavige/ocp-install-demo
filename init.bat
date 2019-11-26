@@ -123,16 +123,15 @@ echo.
  
 if %SECRET_PATH% = [] (
   REM Empty file variable.
-  echo Missing Pull Secret file for starting this Code Ready Containers platform,
-  echo please download from:
-  echo.
-  echo      https://cloud.redhat.com/openshift/install/crc/installer-provisioned
-  echo. 
-  echo Then update the variable 'SECRET_PATH' at top of this file to point to the
-  echo downlaoded file.        i.e. SECRET_PATH='some-dir\pull-secret'
-  echo.
-  GOTO :EOF
+  GOTO :printSecrets
 )
+
+if not exist "%SECRET_PATH%" (
+  REM Not a file.
+  GOTO :printSecrets
+)
+
+
 
 REM Secret path set, so commit to configuration.
 REM
@@ -226,3 +225,16 @@ echo =     $ crc {stop, start, delete}                  =
 echo =                                                  =
 echo ====================================================
 echo.
+
+:printSecrets
+
+	echo
+  echo Missing Pull Secret file for starting this Code Ready Containers platform,
+  echo please download from:
+  echo.
+  echo      https://cloud.redhat.com/openshift/install/crc/installer-provisioned
+  echo. 
+  echo Then update the variable 'SECRET_PATH' at top of this file to point to the
+  echo downlaoded file.        i.e. SECRET_PATH='some-dir\pull-secret'
+  echo.
+
