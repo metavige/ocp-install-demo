@@ -169,6 +169,8 @@ if %ERRORLEVEL% NEQ 0 (
   echo.
   echo Error occurred during 'crc start' command...
   echo.
+	echo Try running 'crc -f delete' to remove existing cluster and the run init script again... 
+	echo
   GOTO :EOF
 )
 

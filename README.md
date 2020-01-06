@@ -55,6 +55,8 @@ installations. If you re-run it, it removes old setups and reinstalls for you.
 
 Supporting Articles
 -------------------
+-[Code Ready Containers - Getting Started with Process Automation in the Cloud](http://www.schabell.org/2019/12/code-ready-containers-getting-started-with-process-automation.html)
+
 - [How to setup OpenShift Container Platform on your local machine in mintues](https://www.schabell.org/2019/11/how-to-setup-openshift-container-platform-in-minutes.html)
 
 - [Cloud Happiness - How to install OpenShift Container Platform with new images and templates in just minute](http://bit.ly/how-to-install-ocp-new-images-and-templates)

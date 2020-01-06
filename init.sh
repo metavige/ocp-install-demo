@@ -1,7 +1,8 @@
 #!/bin/sh 
 
 # Set to your PULL-SECRET file location and admin password.
-SECRET_PATH=PATH_TO_FILE
+SECRET_PATH=
+#SECRET_PATH=/Users/erics/bin/pull-secret      # example path.
 
 # OpenShift client details
 OC_MAJOR_VER=4
@@ -165,6 +166,9 @@ if [ $? -ne 0 ]; then
 		echo
 		echo "Error occurred during 'crc start' command..."
 		echo
+		echo "Try 'crc -f delete' to purge old cluster and run init script again..."
+		echo
+		exit;
 fi
 
 # Find cache directory
