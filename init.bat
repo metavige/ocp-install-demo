@@ -14,6 +14,8 @@ set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2
 REM Code Ready Containers details.
 set VIRT_DRIVER=hyperv
 set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
+set CRC_CPU=4
+set CRC_MEMORY=10000  
 
 REM Config files.
 set ADMINPASS="%USERPROFIL%\.crc\cache\crc_hyperkit_4.2.0\kubeadmin-password"
@@ -131,8 +133,6 @@ if not exist "%SECRET_PATH%" (
   GOTO :printSecrets
 )
 
-
-
 REM Secret path set, so commit to configuration.
 REM
 echo.
@@ -143,6 +143,34 @@ call crc config set pull-secret-file %SECRET_PATH%
 if %ERRORLEVEL% NEQ 0 (
   echo.
   echo Error occurred during 'crc config set pull-secret-file' command...
+  echo.
+  GOTO :EOF
+)
+
+REM Setting CPU count in cofiguration...
+REM
+echo.
+echo Setting cpu count in cofiguration to: %CRC_CPU%
+echo.
+call crc config set cpus %CRC_CPU%
+
+if %ERRORLEVEL% NEQ 0 (
+  echo.
+  echo Error occurred during 'crc config set cpus' command...
+  echo.
+  GOTO :EOF
+)
+
+REM Setting memory in configuration...
+REM
+echo.
+echo Setting memory in cofiguration to: %CRC_MEMORY%
+echo.
+call crc config set memory  %CRC_MEMORY%
+
+if %ERRORLEVEL% NEQ 0 (
+  echo.
+  echo Error occurred during 'crc config set memory' command...
   echo.
   GOTO :EOF
 )

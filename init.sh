@@ -1,20 +1,21 @@
 #!/bin/sh 
 
 # Set to your PULL-SECRET file location and admin password.
-SECRET_PATH=
-#SECRET_PATH=/Users/erics/bin/pull-secret      # example path.
+#SECRET_PATH=
 
 # OpenShift client details
 OC_MAJOR_VER=4
 OC_MINOR_VER=2
 OC_MINI_VER=0
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
-OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2"
+OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
 
 # Code Ready Containers details.
 VIRT_DRIVER="hyperkit"
 CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
+CRC_CPU=4
+CRC_MEMORY=12288    # 12GB
 
 # wipe screen.
 clear 
@@ -136,11 +137,32 @@ fi
 # secret path set, so commit to configuration.
 echo "Setting pull-secret-file in cofiguration to: ${SECRET_PATH}"
 echo
-crc config set pull-secret-file ${SECRET_PATH}
+crc config set pull-secret-file ${SECRET_PATH} >/dev/null 2>&1 
 
 if [ $? -ne 0 ]; then
 		echo
 		echo "Error occurred during 'crc config set pull-secret-file' command..."
+		echo
+fi
+
+echo "Setting CPU count in cofiguration to: ${CRC_CPU}"
+echo
+crc config set cpus ${CRC_CPU} >/dev/null 2>&1 
+
+if [ $? -ne 0 ]; then
+		echo
+		echo "Error occurred during 'crc config set cpu' command..."
+		echo
+fi
+
+
+echo "Setting memory in cofiguration to: ${CRC_MEMORY}"
+echo
+crc config set memory ${CRC_MEMORY} >/dev/null 2>&1 
+
+if [ $? -ne 0 ]; then
+		echo
+		echo "Error occurred during 'crc config set memory' command..."
 		echo
 fi
 
