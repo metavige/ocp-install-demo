@@ -2,6 +2,7 @@
 
 # Set to your PULL-SECRET file location and admin password.
 #SECRET_PATH=
+SECRET_PATH=$HOME/bin/pull-secret
 
 # OpenShift client details
 OC_MAJOR_VER=4
@@ -166,7 +167,6 @@ if [ $? -ne 0 ]; then
 		echo
 fi
 
-echo
 echo "Starting Code Ready Containers platform..."
 echo
 echo "This can take some time, so feel free to grab a coffee..."
