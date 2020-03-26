@@ -6,10 +6,10 @@ set SECRET_PATH=
 
 REM OpenShift client details.
 set OC_MAJOR_VER=4
-set OC_MINOR_VER=2
-set OC_MINI_VER=0
+set OC_MINOR_VER=3
+set OC_MINI_VER=8
 set OCP_VERSION=%OC_MAJOR_VER%.%OC_MINOR_VER%
-set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2"
+set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
 
 REM Code Ready Containers details.
 set VIRT_DRIVER=hyperv
@@ -66,30 +66,21 @@ if %ERRORLEVEL% NEQ 0 (
   echo.
 )
 
-REM Validate version OpenShfit client tool.  [TODO: test on windows]
+REM Validate version OpenShfit client tool.
 REM
-for /f "delims=*" %%i in ('oc version ^| findstr -i oc') do (
-  for /F "tokens=2 delims= " %%A in ('echo %%i') do ( 
-	set verFull=%%A	
-  )
-)
+set verFull='call oc version --client'
 
-for /F "tokens=1,2,3 delims=." %%a in ('echo %verFull%') do (
-  set verone=%%a
-  set vertwo=%%b
-  set verthree=%%c
-)
 
-if %OC_MAJOR_VER% EQU %verone% if %OC_MINOR_VER% EQU %vertwo% if %OC_MINI_VER% EQU %verthree% (
- echo Version of installed OpenShift command line tools correct... %verfull%
+if "%verFull%" EQU "Client Version: %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%" (
+ echo Version of installed OpenShift command line tools correct... %verFull%
  echo.
  GOTO :passOcTestContinue
 )
 
-REM echo Version of installed OpenShift command line tools is %verone%.%vertwo%.%verthree%, must be %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%
-REM echo.
-REM echo Download for Windows here: %OC_URL%
-REM GOTO :EOF
+echo Version of installed OpenShift command line tools is %verFull%, must be %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%
+echo.
+echo Download for Windows here: %OC_URL%
+GOTO :EOF
 
 :passOcTestContinue
 

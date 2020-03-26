@@ -5,8 +5,8 @@
 
 # OpenShift client details
 OC_MAJOR_VER=4
-OC_MINOR_VER=2
-OC_MINI_VER=0
+OC_MINOR_VER=3
+OC_MINI_VER=8
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
 OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
 
@@ -65,7 +65,7 @@ echo "OpenShift command line tools installed... checking for valid version..."
 echo
 
 # Check oc version.
-verfull=$(oc version --client | awk '{print $3}' | awk -F[=-] '{print $3}')
+verfull=$(oc version --client | awk '{print $3}')
 verone=$(echo ${verfull} | awk -F[=.] '{print $1}')
 vertwo=$(echo ${verfull} | awk -F[=.] '{print $2}')
 verthree=$(echo ${verfull} | awk -F[=.] '{print $3}')
