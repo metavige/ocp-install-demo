@@ -68,7 +68,7 @@ if %ERRORLEVEL% NEQ 0 (
 
 REM Validate version OpenShfit client tool.
 REM
-set verFull='call oc version --client'
+for /f "delims=;" %%i in ('call oc version --client') do set verFull=%%i
 
 
 if "%verFull%" EQU "Client Version: %OC_MAJOR_VER%.%OC_MINOR_VER%.%OC_MINI_VER%" (
@@ -114,7 +114,7 @@ echo.
 echo Before starting, setting up pull secret file location...
 echo.
  
-if %SECRET_PATH% = [] (
+if %SECRET_PATH% == [] (
   REM Empty file variable.
   GOTO :printSecrets
 )
