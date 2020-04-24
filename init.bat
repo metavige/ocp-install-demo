@@ -2,7 +2,7 @@
 setlocal
 
 REM Set to your PULL-SECRET file location and admin password.
-set SECRET_PATH=
+REM set SECRET_PATH=
 
 REM OpenShift client details.
 set OC_MAJOR_VER=4
