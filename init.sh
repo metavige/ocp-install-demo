@@ -2,7 +2,6 @@
 
 # Set to your PULL-SECRET file location and admin password.
 #SECRET_PATH=
-SECRET_PATH=${HOME}/bin/pull-secret.txt
 
 # OpenShift client details
 OC_MAJOR_VER=4
@@ -17,7 +16,6 @@ CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
 CRC_CPU=4
 CRC_MEMORY=10240     # 10GB
-#CRC_MEMORY=12228     # 12GB
 
 # wipe screen.
 clear 
