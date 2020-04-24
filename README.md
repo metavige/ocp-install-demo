@@ -96,6 +96,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v2.8 - Code Ready Containers 1.9.0 using OpenShift command line tools v4.3.13 and OpenShift Container Platform 4.3.10.
+
 - v2.7 - Code Ready Containers 1.7.0 using OpenShift command line tools v4.3.8.
 
 - v2.6 - OpenShift Container Platform v3.9 based on OpenShift command line tools v3.9.14, updated with RHDM 7.1 and RHPAM 7.1 image streams and templates.

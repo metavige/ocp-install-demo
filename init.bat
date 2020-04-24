@@ -7,7 +7,7 @@ set SECRET_PATH=
 REM OpenShift client details.
 set OC_MAJOR_VER=4
 set OC_MINOR_VER=3
-set OC_MINI_VER=8
+set OC_MINI_VER=13
 set OCP_VERSION=%OC_MAJOR_VER%.%OC_MINOR_VER%
 set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
 
@@ -59,7 +59,7 @@ REM
 call oc version --client >nul 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
-  echo OpenShift CLI tooling is required but not installed yet... download %OCP_VERSION% here, unzip and install on your path: %OCP_URL%
+  echo OpenShift CLI tooling is required but not installed yet... download %OCP_VERSION% here, unzip and install on your path: %OC_URL%
   GOTO :EOF
 ) else (
   echo OpenShift command line tools installed... checking for valid version...
