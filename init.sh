@@ -78,11 +78,11 @@ else
 	echo "Version of installed OpenShift command line tools is ${verone}.${vertwo}, must be ${OC_MAJOR_VER}.${OC_MINOR_VER}..."
 	echo
 	if [ `uname` == 'Darwin' ]; then
-		echo "Download Mac client here: ${OCP_URL}"
+		echo "Download Mac client here: ${OC_URL}"
 		echo
 		exit
 	else
-		echo "Download Linux client here: ${OCP_URL}"
+		echo "Download Linux client here: ${OC_URL}"
 		echo
 		exit
 	fi
