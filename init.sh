@@ -1,21 +1,21 @@
 #!/bin/sh 
 
-# Set to your PULL-SECRET file location and admin password.
+# Uncomment and set to your PULL-SECRET file location and admin password.
 #SECRET_PATH=
 
 # OpenShift client details
 OC_MAJOR_VER=4
-OC_MINOR_VER=3
-OC_MINI_VER=13
+OC_MINOR_VER=4
+OC_MINI_VER=6
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
-OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
+OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.4.6"
 
 # Code Ready Containers details.
 VIRT_DRIVER="hyperkit"
 CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
 CRC_CPU=4
-CRC_MEMORY=10240     # 10GB
+CRC_MEMORY=14336     # 14GB
 
 # wipe screen.
 clear 
@@ -71,11 +71,11 @@ vertwo=$(echo ${verfull} | awk -F[=.] '{print $2}')
 verthree=$(echo ${verfull} | awk -F[=.] '{print $3}')
 
 # Check version elements, first is a string so using '==', the rest are integers.
-if [ ${verone} == ${OC_MAJOR_VER} ] && [ ${vertwo} -eq ${OC_MINOR_VER} ] && [ ${verthree} -ge ${OC_MINI_VER} ]; then
-	echo "Version of installed OpenShift command line tools correct... ${verone}.${vertwo}.${verthree}"
+if [ ${verone} == ${OC_MAJOR_VER} ] && [ ${vertwo} -eq ${OC_MINOR_VER} ] ; then
+	echo "Version of installed OpenShift command line tools correct... ${verone}.${vertwo}"
 	echo
 else
-	echo "Version of installed OpenShift command line tools is ${verone}.${vertwo}.${verthree}, must be ${OC_MAJOR_VER}.${OC_MINOR_VER}.${OC_MINI_VER}..."
+	echo "Version of installed OpenShift command line tools is ${verone}.${vertwo}, must be ${OC_MAJOR_VER}.${OC_MINOR_VER}..."
 	echo
 	if [ `uname` == 'Darwin' ]; then
 		echo "Download Mac client here: ${OCP_URL}"
