@@ -140,7 +140,3 @@ See the tagged releases for the following versions of the product:
 
 ![OCP Login](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-login.png)
 
-![OCP Install](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-version-checking.png)
-
-![OCP Final](https://gitlab.com/redhatdemocentral/ocp-install-demo/raw/master/docs/demo-images/ocp-install-final-details.png)
-
