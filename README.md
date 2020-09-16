@@ -1,10 +1,10 @@
-Code Ready Containers Easy Local Install  
+CodeReady Containers Easy Local Install  
 ========================================
 If you are looking to develop containerized applications, the OpenShift Container Plaform (OCP) can help you by providing 
 private cloud environment you can install locally. It includes the same container development and run-time 
 tools used to create and deploy containers for large data centers. 
 
-Code Ready Containers can be used without this project, but if you want to try a self-contained and reusable container platform
+CodeReady Containers can be used without this project, but if you want to try a self-contained and reusable container platform
 installation on your local machine with OpenShift Container Platform this might just be the project for you. This project 
 leverages Code Ready Containers, OpenShift command line tools, and a virtualization tool based on your operating system. You can
 start by downloading this project and running as it checks for all needed dependecies when you run the install script. If you're
@@ -54,7 +54,7 @@ installations. If you re-run it, it removes old setups and reinstalls for you.
 Supporting Articles
 -------------------
 
-- [Code Ready Containers - Getting Started with Process Automation in the Cloud](http://www.schabell.org/2019/12/code-ready-containers-getting-started-with-process-automation.html)
+- [CodeReady Containers - Getting Started with Process Automation in the Cloud](http://www.schabell.org/2019/12/code-ready-containers-getting-started-with-process-automation.html)
 
 - [How to setup OpenShift Container Platform on your local machine in mintues](https://www.schabell.org/2019/11/how-to-setup-openshift-container-platform-in-minutes.html)
 
@@ -95,13 +95,13 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
-- v3.0 - Code Ready Containers 1.15.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5
+- v3.0 - CodeReady Containers 1.15.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5
 
-- v2.9 - Code Ready Containers 1.11.0 using OpenShift command line tools v4.4 and OpenShift Container Platform 4.4.
+- v2.9 - CodeReady Containers 1.11.0 using OpenShift command line tools v4.4 and OpenShift Container Platform 4.4.
 
-- v2.8 - Code Ready Containers 1.9.0 using OpenShift command line tools v4.3 and OpenShift Container Platform 4.3.
+- v2.8 - CodeReady Containers 1.9.0 using OpenShift command line tools v4.3 and OpenShift Container Platform 4.3.
 
-- v2.7 - Code Ready Containers 1.7.0 using OpenShift command line tools v4.3.
+- v2.7 - CodeReady Containers 1.7.0 using OpenShift command line tools v4.3.
 
 - v2.6 - OpenShift Container Platform v3.9 based on OpenShift command line tools v3.9.14, updated with RHDM 7.1 and RHPAM 7.1 image streams and templates.
 
