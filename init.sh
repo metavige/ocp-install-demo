@@ -6,15 +6,15 @@ SECRET_PATH=${HOME}/bin/pull-secret.txt
 
 # OpenShift client details
 OC_MAJOR_VER=4
-OC_MINOR_VER=4
-OC_MINI_VER=6
+OC_MINOR_VER=5
+OC_MINI_VER=8
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
-OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.4.6"
+OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/"
 
 # Code Ready Containers details.
 VIRT_DRIVER="hyperkit"
-CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
-CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
+CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-4.5.8.tar.gz"
+CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-mac-4.5.8.tar.gz"
 CRC_CPU=4
 CRC_MEMORY=14336     # 14GB
 
