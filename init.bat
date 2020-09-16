@@ -6,14 +6,14 @@ REM set SECRET_PATH=
 
 REM OpenShift client details.
 set OC_MAJOR_VER=4
-set OC_MINOR_VER=3
-set OC_MINI_VER=13
+set OC_MINOR_VER=5
+set OC_MINI_VER=8
 set OCP_VERSION=%OC_MAJOR_VER%.%OC_MINOR_VER%
-set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.3"
+set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/"
 
 REM Code Ready Containers details.
 set VIRT_DRIVER=hyperv
-set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
+set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-windows-4.5.8.zip"
 set CRC_CPU=4
 set CRC_MEMORY=10240
 
