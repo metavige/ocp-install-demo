@@ -13,7 +13,7 @@ set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/"
 
 REM Code Ready Containers details.
 set VIRT_DRIVER=hyperv
-set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-windows-4.5.8.zip"
+set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
 set CRC_CPU=4
 set CRC_MEMORY=10240
 
