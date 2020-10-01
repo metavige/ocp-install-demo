@@ -19,7 +19,7 @@ Enjoy your easy to install, local OpenShift Container Platform:
    3. OpenShift Client (oc) v4.5
 
 Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
-to your very own local container platform installation.
+to your very own local container platform installation. Try the [video tutorial if you need help.](https://vimeo.com/463766806)
 
 
 Install on your machine
