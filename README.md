@@ -6,8 +6,8 @@ tools used to create and deploy containers for large data centers.
 
 CodeReady Containers can be used without this project, but if you want to try a self-contained and reusable container platform
 installation on your local machine with OpenShift Container Platform this might just be the project for you. This project 
-leverages Code Ready Containers, OpenShift command line tools, and a virtualization tool based on your operating system. You can
-start by downloading this project and running as it checks for all needed dependecies when you run the install script. If you're
+leverages CodeReady Containers, OpenShift command line tools, and a virtualization tool based on your operating system. You can
+start by downloading this project and running as it checks for all needed dependencies when you run the install script. If you're
 missing anything, you'll receive pointers to where to find what's needed. Just download the missing component and restart the
 install script. Re-running this after an installation is also safe, it's full of checks and verifications that you'll see on the
 screen as you run the install script. 
