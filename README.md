@@ -56,6 +56,8 @@ Supporting Articles
 
 - [Video: CodeReady Containers - Easy OpenShift Container Platform 4.5 Installation](https://vimeo.com/463766806)
 
+- [How to setup OpenShift Container Platform 4.5 on your local machine in minutes](https://dzone.com/articles/how-to-setup-openshift-container-platform-45-on-yo)
+
 - [CodeReady Containers - Getting Started with Process Automation in the Cloud](http://www.schabell.org/2019/12/code-ready-containers-getting-started-with-process-automation.html)
 
 - [How to setup OpenShift Container Platform on your local machine in mintues](https://www.schabell.org/2019/11/how-to-setup-openshift-container-platform-in-minutes.html)
