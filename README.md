@@ -15,8 +15,8 @@ screen as you run the install script.
 Enjoy your easy to install, local OpenShift Container Platform:
 
    1. HyperKit for OSX, Hyper-V for Windows, or Libvirt for Linux
-   2. Code Ready Containers (OCP 4.5)
-   3. OpenShift Client (oc) v4.5
+   2. CodeReady Containers (OpenShift Container Platform 4.6)
+   3. OpenShift Client (oc) v4.6
 
 Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
 to your very own local container platform installation. Try the [video tutorial if you need help.](https://vimeo.com/463766806)
@@ -99,11 +99,13 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
-- v3.2 - CodeReady Containers 1.17.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5
+- v3.3 - CodeReady Containers 1.18.0 using OpenShift command line tools v4.6 and OpenShift Container Platform 4.6.
 
-- v3.1 - CodeReady Containers 1.16.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5
+- v3.2 - CodeReady Containers 1.17.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5.
 
-- v3.0 - CodeReady Containers 1.15.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5
+- v3.1 - CodeReady Containers 1.16.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5.
+
+- v3.0 - CodeReady Containers 1.15.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5.
 
 - v2.9 - CodeReady Containers 1.11.0 using OpenShift command line tools v4.4 and OpenShift Container Platform 4.4.
 
