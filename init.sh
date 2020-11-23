@@ -1,14 +1,14 @@
 #!/bin/sh 
 
 # Uncomment and set to your PULL-SECRET file location and admin password.
-#SECRET_PATH=
+#SECRET_PATH=${HOME}/bin/pull-secret.txt
 
 # OpenShift client details
 OC_MAJOR_VER=4
 OC_MINOR_VER=6
-OC_MINI_VER=1
+OC_MINI_VER=3
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
-OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/"
+OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.3/"
 
 # Code Ready Containers details.
 VIRT_DRIVER="hyperkit"

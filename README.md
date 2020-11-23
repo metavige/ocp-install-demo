@@ -99,6 +99,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v3.4 - CodeReady Containers 1.19.0 using OpenShift command line tools v4.6.3 and OpenShift Container Platform 4.6.3
+
 - v3.3 - CodeReady Containers 1.18.0 using OpenShift command line tools v4.6 and OpenShift Container Platform 4.6.
 
 - v3.2 - CodeReady Containers 1.17.0 using OpenShift command line tools v4.5 and OpenShift Container Platform 4.5.
