@@ -14,7 +14,7 @@ set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.3/"
 REM CodeReady Containers details.
 set VIRT_DRIVER=hyperv
 set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
-set CRC_CPU=4
+set CRC_CPU=6
 
 REM Memory allocation options (14GB or 16GB).
 set CRC_MEMORY=14336     
