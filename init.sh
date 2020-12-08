@@ -18,7 +18,6 @@ CRC_CPU=6
 #CRC_MEMORY=14336     # 14GB
 CRC_MEMORY=16384     # 16GB
 
-
 # wipe screen.
 clear 
 
@@ -137,7 +136,7 @@ if [ -z ${SECRET_PATH} ] || [ ! -f ${SECRET_PATH} ]; then
 fi
 	
 # secret path set, so commit to configuration.
-echo "Setting pull-secret-file in cofiguration to: ${SECRET_PATH}"
+echo "Setting pull-secret-file in configuration to: ${SECRET_PATH}"
 echo
 crc config set pull-secret-file ${SECRET_PATH} >/dev/null 2>&1 
 

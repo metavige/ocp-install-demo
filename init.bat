@@ -130,7 +130,7 @@ if not exist "%SECRET_PATH%" (
 REM Secret path set, so commit to configuration.
 REM
 echo.
-echo Setting pull-secret-file in cofiguration to: %SECRET_PATH%
+echo Setting pull-secret-file in configuration to: %SECRET_PATH%
 echo.
 call crc config set pull-secret-file %SECRET_PATH%
 
