@@ -54,6 +54,8 @@ installations. If you re-run it, it removes old setups and reinstalls for you.
 Supporting Articles
 -------------------
 
+- [CodeReady Containers - Installing business automation operator (Part 1)](https://www.schabell.org/2020/12/codeready-containers-installing-business-automation-operator-part1.html) 
+
 - [Video: CodeReady Containers - Easy OpenShift Container Platform 4.5 Installation](https://vimeo.com/463766806)
 
 - [How to setup OpenShift Container Platform 4.5 on your local machine in minutes](https://dzone.com/articles/how-to-setup-openshift-container-platform-45-on-yo)
