@@ -6,9 +6,9 @@ SECRET_PATH=
 # OpenShift client details
 OC_MAJOR_VER=4
 OC_MINOR_VER=6
-OC_MINI_VER=3
+OC_MINI_VER=6
 OCP_VERSION="${OC_MAJOR_VER}.${OC_MINOR_VER}"
-OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.3/"
+OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.6/"
 
 # Code Ready Containers details.
 VIRT_DRIVER="hyperkit"
