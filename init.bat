@@ -7,9 +7,9 @@ REM set SECRET_PATH=
 REM OpenShift client details.
 set OC_MAJOR_VER=4
 set OC_MINOR_VER=6
-set OC_MINI_VER=3
+set OC_MINI_VER=6
 set OCP_VERSION=%OC_MAJOR_VER%.%OC_MINOR_VER%
-set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.3/"
+set OC_URL="https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.6/"
 
 REM CodeReady Containers details.
 set VIRT_DRIVER=hyperv
