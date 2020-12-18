@@ -1,5 +1,5 @@
-CodeReady Containers Easy Local Install  
-========================================
+CodeReady Containers Easy Install  
+=================================
 If you are looking to develop containerized applications, the OpenShift Container Platform (OCP) can help you by providing 
 private cloud environment you can install locally. It includes the same container development and run-time 
 tools used to create and deploy containers for large data centers. 
@@ -19,7 +19,11 @@ Enjoy your easy to install, local OpenShift Container Platform:
    3. OpenShift Client (oc) v4.6.6 
 
 Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
-to your very own local container platform installation. Try the [video tutorial if you need help.](https://vimeo.com/463766806)
+to your very own local container platform installation. 
+
+![OCP hub](docs/demo-images/operator-hub.png)
+
+Try the [video tutorial if you need help.](https://vimeo.com/463766806)
 
 
 Install on your machine
