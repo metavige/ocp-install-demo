@@ -241,7 +241,7 @@ echo =                                                  =
 echo =  Now get your Red Hat Demo Central example       =
 echo =  projects here:                                  =
 echo =                                                  =
-echo =     https://github.com/redhatdemocentral         =
+echo =     https://gitlab.com/redhatdemocentral         =
 echo =                                                  =
 echo =  To stop, start, or delete your OCP cluster:     =
 echo =                                                  =

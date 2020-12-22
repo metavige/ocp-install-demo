@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 # Uncomment and set to your PULL-SECRET file location and admin password.
-SECRET_PATH=
+SECRET_PATH=${HOME}/bin/pull-secret.txt
 
 # OpenShift client details
 OC_MAJOR_VER=4
@@ -17,6 +17,7 @@ CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-ma
 CRC_CPU=6
 #CRC_MEMORY=14336     # 14GB
 CRC_MEMORY=16384     # 16GB
+#CRC_MEMORY=24576   # 24GB
 
 # wipe screen.
 clear 
@@ -245,7 +246,7 @@ echo "=                                                    ="
 echo "=  Now get your Red Hat Demo Central example         ="
 echo "=  projects here:                                    ="
 echo "=                                                    ="
-echo "=     https://github.com/redhatdemocentral           ="
+echo "=     https://gitlab.com/redhatdemocentral           ="
 echo "=                                                    ="
 echo "=  To stop, restart, or delete your OCP cluster:     ="
 echo "=                                                    ="
