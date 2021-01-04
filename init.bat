@@ -16,9 +16,9 @@ set VIRT_DRIVER=hyperv
 set CRC_WINDOWS="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-windows-amd64.zip"
 set CRC_CPU=6
 
-REM Memory allocation options (14GB or 16GB).
-REM set CRC_MEMORY=14336     
+REM Memory allocation options (16GB or 24GB).
 set CRC_MEMORY=16384     
+REM set CRC_MEMORY=24567
 
 REM Config files.
 set ADMINPASS="%USERPROFIL%\.crc\cache\crc_hyperkit_4.2.0\kubeadmin-password"

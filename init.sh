@@ -15,9 +15,8 @@ VIRT_DRIVER="hyperkit"
 CRC_LINUX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
 CRC_OSX="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-macos-amd64.tar.xz"
 CRC_CPU=6
-#CRC_MEMORY=14336     # 14GB
 CRC_MEMORY=16384     # 16GB
-#CRC_MEMORY=24576   # 24GB
+#CRC_MEMORY=24576     # 24GB
 
 # wipe screen.
 clear 
