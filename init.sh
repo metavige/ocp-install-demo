@@ -72,11 +72,11 @@ vertwo=$(echo ${verfull} | awk -F[=.] '{print $2}')
 verthree=$(echo ${verfull} | awk -F[=.] '{print $3}')
 
 # Check version elements, first is a string so using '==', the rest are integers.
-if [ ${verone} == ${OC_MAJOR_VER} ] && [ ${vertwo} -eq ${OC_MINOR_VER} ] ; then
-	echo "Version of installed OpenShift command line tools correct... ${verone}.${vertwo}"
+if [ ${verone} == ${OC_MAJOR_VER} ] && [ ${vertwo} -eq ${OC_MINOR_VER} ] && [ ${verthree} -eq ${OC_MINI_VER} ]; then
+	echo "Version of installed OpenShift command line tools correct... ${verone}.${vertwo}.${verthree}"
 	echo
 else
-	echo "Version of installed OpenShift command line tools is ${verone}.${vertwo}, must be ${OC_MAJOR_VER}.${OC_MINOR_VER}..."
+	echo "Version of installed OpenShift command line tools is ${verone}.${vertwo}.${verthree}, must be ${OC_MAJOR_VER}.${OC_MINOR_VER}.${OC_MINI_VER}..."
 	echo
 	if [ `uname` == 'Darwin' ]; then
 		echo "Download Mac client here: ${OC_URL}"
