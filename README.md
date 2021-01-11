@@ -28,7 +28,7 @@ Try the [video tutorial if you need help.](https://vimeo.com/463766806)
 
 Install on your machine
 -----------------------
-1. [Download and unzip.](https://gitlab.com/redhatdemocentral/ocp-install-demo/-/archive/master/ocp-install-demo-master.zip)
+1. [Download and unzip.](https://gitlab.com/redhatdemocentral/ocp-install-demo/-/archive/main/ocp-install-demo-main.zip)
 
 2. Run 'init.sh' or 'init.bat' file, then sit back. (Note: 'init.bat' should be run with Administrative privileges.)
 
