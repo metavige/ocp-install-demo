@@ -15,8 +15,8 @@ screen as you run the install script.
 Enjoy your easy to install, local OpenShift Container Platform:
 
    1. HyperKit for OSX, Hyper-V for Windows, or Libvirt for Linux
-   2. CodeReady Containers (OpenShift Container Platform 4.6.6, config is 6 cpu and 16GB ram)
-   3. OpenShift Client (oc) v4.6.15 
+   2. CodeReady Containers (OpenShift Container Platform 4.7.0, config is 6 cpu and 16GB ram)
+   3. OpenShift Client (oc) v4.7.0
 
 Just download this project, unzip, and run the init.{sh|bat} you need, then follow the instructions on the road
 to your very own local container platform installation. 
@@ -111,6 +111,8 @@ Supporting Articles
 Released versions
 -----------------
 See the tagged releases for the following versions of the product:
+
+- v3.7 - CodeReady Containers 1.23.1 using OpenShift command line tools v4.7.0 and OpenShift Container Platform 4.7.0
 
 - v3.6 - CodeReady Containers 1.22.0 using OpenShift command line tools v4.6.15 and OpenShift Container Platform 4.6.15
 
