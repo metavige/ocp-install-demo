@@ -57,6 +57,8 @@ installations. If you re-run it, it removes old setups and reinstalls for you.
 
 Supporting Articles
 -------------------
+- [How to setup the OpenShift Container Platform 4.7 on your local machine](https://www.schabell.org/2021/03/codeready-containers-howto-setup-openshift-47-on-local-machine.html)
+
 - [How to setup the OpenShift Container Platform 4.6 on your local machine](https://www.schabell.org/2021/01/codeready-containers-howto-setup-openshift-46-on-local-machine.htmla)
 
 - [CodeReady Containers - Installing business automation operator (Part 4)](https://www.schabell.org/2021/01/codeready-containers-installing.html)
