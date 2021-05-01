@@ -3,3 +3,6 @@ target/
 *.box
 *.zip
 
+pull-secret.txt
+*.tar
+crc-*/

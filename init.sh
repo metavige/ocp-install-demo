@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 # Uncomment and set to your PULL-SECRET file location and admin password.
-SECRET_PATH=
+SECRET_PATH=${PWD}/pull-secret.txt
 
 # OpenShift client details
 OC_MAJOR_VER=4
